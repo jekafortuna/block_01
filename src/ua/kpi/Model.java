@@ -8,24 +8,32 @@ package ua.kpi;
 public class Model {
 
     /**
-     * parameters
+     * min Barrier of secret number
      */
-    private int lowerBorder;
-    private int upperBorder;
-    private int number;
+    private int minBarrier;
+
+    /**
+     * max Barrier of secret number
+     */
+    private int maxBarrier;
+
+    /**
+     * secret chosen number
+     */
+    private int secretValue;
 
     /**
      * constructor
      */
     public Model() {
-        lowerBorder = 0;
-        upperBorder = 100;
-        number = rand(0, 100);
+        minBarrier = 0;
+        maxBarrier = 100;
+        secretValue = rand(0, 100);
     }
 
     /**
-     * function of finding random number
-     * @return number
+     * function of finding random secretValue
+     * @return secretValue
      */
     private int rand(){
         return (int)(Math.random() * Integer.MAX_VALUE);
@@ -38,23 +46,23 @@ public class Model {
     /**
      * getters and setters
      */
-    public int getNumber() {
-        return number;
+    public int getSecretValue() {
+        return secretValue;
     }
 
-    public int getLowerBorder() {
-        return lowerBorder;
+    public int getMinBarrier() {
+        return minBarrier;
     }
 
-    public void setLowerBorder(int lowerBorder) {
-        this.lowerBorder = lowerBorder;
+    public void setMinBarrier(int minBarrier) {
+        this.minBarrier = minBarrier;
     }
 
-    public int getUpperBorder() {
-        return upperBorder;
+    public int getMaxBarrier() {
+        return maxBarrier;
     }
 
-    public void setUpperBorder(int upperBorder) {
-        this.upperBorder = upperBorder;
+    public void setMaxBarrier(int maxBarrier) {
+        this.maxBarrier = maxBarrier;
     }
 }

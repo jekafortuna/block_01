@@ -22,20 +22,23 @@ public class Controller {
         this.view = view;
     }
 
+    // The Work method
     public void processUser(){
         Scanner scanner = new Scanner(System.in);
         int userNumber = -1;
 
-        while (userNumber != model.getNumber()){
+        System.out.println(model.getSecretValue());
+
+        while (userNumber != model.getSecretValue()){
             userNumber = inputIntValueWithScanner(scanner);
 
-            if (userNumber < model.getNumber()){
+            if (userNumber < model.getSecretValue()){
                 view.printMessage(view.LOWER_VALUE);
-                model.setLowerBorder(userNumber + 1);
+                model.setMinBarrier(userNumber + 1);
             }
-            else if (userNumber > model.getNumber()){
+            else if (userNumber > model.getSecretValue()){
                 view.printMessage(view.BIGGER_VALUE);
-                model.setUpperBorder(userNumber - 1);
+                model.setMaxBarrier(userNumber - 1);
             }
         }
         view.printMessage(view.WIN_MESSAGE);
@@ -43,17 +46,17 @@ public class Controller {
 
     public int inputIntValueWithScanner(Scanner scanner){
         int number;
-        view.printRequestMessage(model.getLowerBorder(), model.getUpperBorder());
+        view.printRequestMessage(model.getMinBarrier(), model.getMaxBarrier());
 
         while (!scanner.hasNextInt()){
             view.printMessage(view.WRONG_INPUT_NUMBER);
-            view.printRequestMessage(model.getLowerBorder(), model.getUpperBorder());
+            view.printRequestMessage(model.getMinBarrier(), model.getMaxBarrier());
             scanner.next();
         }
 
         number = scanner.nextInt();
 
-        if ((number < model.getLowerBorder()) || (number > model.getUpperBorder())){
+        if ((number < model.getMinBarrier()) || (number > model.getMaxBarrier())){
             view.printMessage(view.WRONG_INPUT_NUMBER);
             return inputIntValueWithScanner(scanner);
         }
